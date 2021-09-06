@@ -35,5 +35,5 @@ jobs:
     - uses: actions/upload-artifact@v2
       with:
         name: monke
-        path: build/monke.exe
+        path: build/Release/monke.exe
       
