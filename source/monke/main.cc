@@ -25,8 +25,8 @@ void help() {
   std::cout << "Copyright 2021 averysumner" << std::endl << std::endl;
   std::cout << "Usage: monke <command> [arguments]" << std::endl << std::endl;
   std::cout << "Commands:" << std::endl;
-  std::cout << " unpack <input path> <output path> <password>" << std::endl;
   std::cout << " pack <input path> <output path> <password>" << std::endl;
+  std::cout << " unpack <input path> <output path> <password>" << std::endl;
 }
 
 int main(int argc, char* argv[]) {
