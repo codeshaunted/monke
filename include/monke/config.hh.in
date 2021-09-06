@@ -1,0 +1,32 @@
+// averysumner - monke
+// config.hh
+// contains configuration values
+// Copyright 2021 averysumner
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//     http://www.apache.org / licenses / LICENSE - 2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissionsand
+// limitations under the License.
+
+#ifndef MONKE_CONFIG_HH
+#define MONKE_CONFIG_HH
+
+#define MONKE_VERSION_MAJOR @monke_VERSION_MAJOR@
+#define MONKE_VERSION_MINOR @monke_VERSION_MINOR@
+#define MONKE_DUMMY_HEADER_LENGTH 44
+#define MONKE_SALT_LENGTH 24
+#define MONKE_KEY_LENGTH 16
+#define MONKE_IV_LENGTH 16
+#define MONKE_DERIVE_ITERATIONS 10
+#define MONKE_PASSWORD_INDEX 2
+#define MONKE_COMPRESSION_LEVEL 3
+#define MONKE_COMPRESSION_LOG2_BUFFER_SIZE 11 // 2^11 == 2048
+
+#endif // MONKE_CONFIG_HH
