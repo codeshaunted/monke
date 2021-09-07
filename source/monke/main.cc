@@ -16,6 +16,7 @@
 // limitations under the License.
 
 #include <iostream>
+#include <cstring>
 
 #include "pack.hh" 
 #include "config.hh"
@@ -43,7 +44,7 @@ int main(int argc, char* argv[]) {
 
     monke::Pack::unpack(argv[2], argv[3], argv[4]);
 
-    std::cout << "Unpacked '" << argv[2] << "' with password '" << argv[3] << "' to '" << argv[4] << std::endl;
+    std::cout << "Unpacked '" << argv[2] << "' with password '" << argv[4] << "' to '" << argv[3] << "'." << std::endl;
   }
   else if (!strcmp(argv[1], "pack") || !strcmp(argv[1], "p")) {
     if (argc != 5) {
@@ -53,7 +54,7 @@ int main(int argc, char* argv[]) {
 
     monke::Pack::pack(argv[2], argv[3], argv[4]);
 
-    std::cout << "Packed '" << argv[2] << "' with password '" << argv[3] << "' to '" << argv[4] << std::endl;
+    std::cout << "Packed '" << argv[2] << "' with password '" << argv[4] << "' to '" << argv[3] << "'." << std::endl;
   }
   else {
     help();
