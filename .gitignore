@@ -38,3 +38,4 @@ CMakeSettings.json
 # Build Folders
 build/
 out/
+third_party/cryptopp-cmake
