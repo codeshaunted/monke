@@ -18,7 +18,7 @@ If building with CMake for some reason fails, please open an issue.
 # Passwords
 
 To pack or unpack a save file you need a password, the following is a list of passwords corresponding to NinjaKiwi games. In all cases so far, the password corresponds to NinjaKiwi's internal "app ID" for the game.
-| Game | Password |
+| Game          | Password    |
 | ------------- | ----------- |
-| Tower Keepers | `8` |
-| Bloons TD 6 | `11` |
+| Tower Keepers | `8`         |
+| Bloons TD 6   | `11`        |
