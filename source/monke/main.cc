@@ -1,5 +1,5 @@
 // averysumner - monke
-// main.cc
+// source/monke/main.cc
 // contains entry point
 // Copyright 2021 averysumner
 //
