@@ -1,5 +1,5 @@
 # averysumner - monke
-# CMakeLists.txt
+# third_party/CMakeLists.txt
 # third party directory CMake file
 # Copyright 2021 averysumner
 #
