@@ -1,5 +1,5 @@
 # averysumner - monke
-# CMakeLists.txt
+# source/monke/CMakeLists.txt
 # source file directory CMake file
 # Copyright 2021 averysumner
 #
