@@ -1,6 +1,6 @@
 // averysumner - monke
-// pack.cc
-// contains definitions for pack class
+// source/monke/pack.cc
+// contains definitions for Pack class
 // Copyright 2021 averysumner
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
