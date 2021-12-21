@@ -1,6 +1,6 @@
 // averysumner - monke
-// pack.hh
-// contains declarations for pack class
+// include/monke/pack.hh
+// contains declarations for Pack class
 // Copyright 2021 averysumner
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
