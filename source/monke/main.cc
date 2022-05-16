@@ -1,7 +1,7 @@
-// averysumner - monke
+// codeshaunted - monke
 // source/monke/main.cc
 // contains entry point
-// Copyright 2021 averysumner
+// Copyright 2021 codeshaunted
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -23,7 +23,7 @@
 
 void help() {
   std::cout << "monke v" << MONKE_VERSION_MAJOR << "." << MONKE_VERSION_MINOR << std::endl;
-  std::cout << "Copyright 2021 averysumner" << std::endl << std::endl;
+  std::cout << "Copyright 2021 codeshaunted" << std::endl << std::endl;
   std::cout << "Usage: monke <command> [arguments]" << std::endl << std::endl;
   std::cout << "Commands:" << std::endl;
   std::cout << " pack <input path> <output path> <password>" << std::endl;

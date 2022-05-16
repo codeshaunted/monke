@@ -1,7 +1,7 @@
-// averysumner - monke
+// codeshaunted - monke
 // source/monke/pack.cc
 // contains definitions for Pack class
-// Copyright 2021 averysumner
+// Copyright 2021 codeshaunted
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -35,10 +35,10 @@
 
 namespace monke {
 
-void Pack::pack(std::string_view __input_path, std::string_view __output_path, std::string_view __password) {
+void Pack::pack(std::string_view input_path, std::string_view output_path, std::string_view password) {
   // open output file
   std::ofstream output_file;
-  output_file.open(__output_path.data(), std::ios::out | std::ios::binary);
+  output_file.open(output_path.data(), std::ios::out | std::ios::binary);
 
   // write dummy header
   char dummy_header[MONKE_DUMMY_HEADER_LENGTH] = {0};
@@ -56,7 +56,7 @@ void Pack::pack(std::string_view __input_path, std::string_view __output_path, s
   // derive key and iv from salt and password
   CryptoPP::byte derived_key[MONKE_KEY_LENGTH + MONKE_IV_LENGTH];
   CryptoPP::PKCS5_PBKDF2_HMAC<CryptoPP::SHA1> pbkdf2;
-  pbkdf2.DeriveKey(derived_key, MONKE_KEY_LENGTH + MONKE_IV_LENGTH, 0, (const CryptoPP::byte*)__password.data(), __password.size(), salt.BytePtr(), salt.size(), MONKE_DERIVE_ITERATIONS, 0.0f);
+  pbkdf2.DeriveKey(derived_key, MONKE_KEY_LENGTH + MONKE_IV_LENGTH, 0, (const CryptoPP::byte*)password.data(), password.size(), salt.BytePtr(), salt.size(), MONKE_DERIVE_ITERATIONS, 0.0f);
 
   // set key and iv
   CryptoPP::CBC_Mode<CryptoPP::AES>::Encryption encryptor;
@@ -64,7 +64,7 @@ void Pack::pack(std::string_view __input_path, std::string_view __output_path, s
 
   // open input file
   std::ifstream input_file;
-  input_file.open(__input_path.data(), std::ios::in | std::ios::binary);
+  input_file.open(input_path.data(), std::ios::in | std::ios::binary);
 
   // compress data
   std::vector<CryptoPP::byte> compressed_data;
@@ -81,10 +81,10 @@ void Pack::pack(std::string_view __input_path, std::string_view __output_path, s
   output_file.close();
 }
 
-void Pack::unpack(std::string_view __input_path, std::string_view __output_path, std::string_view __password) {
+void Pack::unpack(std::string_view input_path, std::string_view output_path, std::string_view password) {
   // open input file
   std::ifstream input_file;
-  input_file.open(__input_path.data(), std::ios::in | std::ios::binary);
+  input_file.open(input_path.data(), std::ios::in | std::ios::binary);
 
   // read dummy header (44 bytes of garbage?)
   char dummy_header[MONKE_DUMMY_HEADER_LENGTH];
@@ -101,7 +101,7 @@ void Pack::unpack(std::string_view __input_path, std::string_view __output_path,
   // derive key and iv from salt and password
   CryptoPP::byte derived_key[MONKE_KEY_LENGTH + MONKE_IV_LENGTH];
   CryptoPP::PKCS5_PBKDF2_HMAC<CryptoPP::SHA1> pbkdf2;
-  pbkdf2.DeriveKey(derived_key, MONKE_KEY_LENGTH + MONKE_IV_LENGTH, 0, (const CryptoPP::byte*)__password.data(), __password.size(), (const CryptoPP::byte*)salt, sizeof(salt), MONKE_DERIVE_ITERATIONS, 0.0f);
+  pbkdf2.DeriveKey(derived_key, MONKE_KEY_LENGTH + MONKE_IV_LENGTH, 0, (const CryptoPP::byte*)password.data(), password.size(), (const CryptoPP::byte*)salt, sizeof(salt), MONKE_DERIVE_ITERATIONS, 0.0f);
 
   // set key and iv
   CryptoPP::CBC_Mode<CryptoPP::AES>::Decryption decryptor;
@@ -109,7 +109,7 @@ void Pack::unpack(std::string_view __input_path, std::string_view __output_path,
 
   // open output file
   std::ofstream output_file;
-  output_file.open(__output_path.data(), std::ios::out | std::ios::binary);
+  output_file.open(output_path.data(), std::ios::out | std::ios::binary);
 
   // decrypt data
   std::vector<CryptoPP::byte> decrypted_data;
