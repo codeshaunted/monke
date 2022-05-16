@@ -38,7 +38,7 @@ monke unpack Profile.Save Profile.Save.json 11
 The `pack` command will pack a file into a new NinjaKiwi encoded file. It requires that you give it an input file path, an output file path, and the password to pack the file with. An example of `pack` usage is shown below.
 ```bash
 :: Pack a file in the working directory named 'Profile.Save.json' into a new file named 'Profile.Save', using the password '11'
-monke pack Profile.Save Profile.Save.json 11
+monke pack Profile.Save.json Profile.Save 11
 ```
 
 # Passwords
