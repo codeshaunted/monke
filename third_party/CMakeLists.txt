@@ -16,7 +16,7 @@
 # limitations under the License.
 
 # cryptopp-cmake
-set(CRYPTOPP_PROJECT_DIR "${CMAKE_SOURCE_DIR}/third_party/cryptopp")
-set(BUILD_SHARED OFF)
-set(BUILD_TESTING OFF)
+set(CRYPTOPP_PROJECT_DIR "${CMAKE_SOURCE_DIR}/third_party/cryptopp" CACHE STRING "" FORCE)
+set(BUILD_SHARED OFF CACHE BOOL "" FORCE)
+set(BUILD_TESTING OFF CACHE BOOL "" FORCE)
 add_subdirectory("cryptopp-cmake")
