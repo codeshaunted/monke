@@ -21,7 +21,7 @@ set(MONKE_SOURCE_FILES
 
 set(MONKE_INCLUDE_DIRECTORIES
 	"${CMAKE_SOURCE_DIR}/include/monke"
-	"${CMAKE_SOURCE_DIR}/third_party/cryptopp-cmake"
+	"${CMAKE_SOURCE_DIR}/third_party"
 	"${PROJECT_BINARY_DIR}/source/monke")
 
 set(MONKE_LINK_LIBRARIES

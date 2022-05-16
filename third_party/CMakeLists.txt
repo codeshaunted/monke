@@ -16,6 +16,7 @@
 # limitations under the License.
 
 # cryptopp-cmake
-set(BUILD_SHARED OFF CACHE BOOL "Disable cryptopp shared library build." FORCE)
-set(BUILD_TESTING OFF CACHE BOOL "Disable cryptopp tests build." FORCE)
+set(CRYPTOPP_PROJECT_DIR "${CMAKE_SOURCE_DIR}/third_party/cryptopp")
+set(BUILD_SHARED OFF)
+set(BUILD_TESTING OFF)
 add_subdirectory("cryptopp-cmake")
