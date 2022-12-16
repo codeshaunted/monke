@@ -17,7 +17,7 @@
 
 cmake_minimum_required(VERSION 3.12)
 
-project(monke VERSION 1.1)
+project(monke VERSION 1.2)
 
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED TRUE)
