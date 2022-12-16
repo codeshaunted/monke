@@ -1,7 +1,7 @@
-# averysumner - monke
+# codeshaunted - monke
 # third_party/CMakeLists.txt
 # third party directory CMake file
-# Copyright 2021 averysumner
+# Copyright 2022 codeshaunted
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -16,7 +16,5 @@
 # limitations under the License.
 
 # cryptopp-cmake
-set(CRYPTOPP_PROJECT_DIR "${CMAKE_SOURCE_DIR}/third_party/cryptopp" CACHE STRING "" FORCE)
-set(BUILD_SHARED OFF CACHE BOOL "" FORCE)
-set(BUILD_TESTING OFF CACHE BOOL "" FORCE)
+set(CRYPTOPP_BUILD_TESTING OFF CACHE BOOL "" FORCE)
 add_subdirectory("cryptopp-cmake")
