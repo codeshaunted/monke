@@ -1,5 +1,5 @@
 # monke
-monke is a command line packing/unpacking tool for Bloons TD 6 save files. It can be used on files such as `Profile.Save`, `identity`, `player-index-PRODUCTION` and anything else with the same NinjaKiwi file encoding. In Bloons TD 6 specifically, it allows for modification of save files to give monkey money, instant monkeys, change levels, give exp, etc. You use this tool at your own risk, as abusing it could cause your NinjaKiwi account to be flagged or banned.
+monke is a command line packing/unpacking tool for Bloons TD 6 save files. It can be used on files such as `Profile.Save`, `identity`, `player-index-PRODUCTION` and anything else with the same NinjaKiwi file encoding. You use this tool at your own risk, as abusing it could cause your NinjaKiwi account to be flagged or banned.
 
 # Building
 ## Disclaimer
