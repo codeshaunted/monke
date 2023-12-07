@@ -32,13 +32,13 @@ monke is a very simple program with only two commands, `unpack` and `pack`.
 The `unpack` command will unpack a NinjaKiwi encoded file into a new file. It requires that you give it an input file path, an output file path, and the password to unpack the file with. An example of `unpack` usage is shown below.
 ```bash
 :: Unpack a file in the working directory named 'Profile.Save' into a new file named 'Profile.Save.json', using the password '11'
-monke unpack Profile.Save Profile.Save.json 11
+.\monke.exe unpack Profile.Save Profile.Save.json 11
 ```
 ## `pack`
 The `pack` command will pack a file into a new NinjaKiwi encoded file. It requires that you give it an input file path, an output file path, and the password to pack the file with. An example of `pack` usage is shown below.
 ```bash
 :: Pack a file in the working directory named 'Profile.Save.json' into a new file named 'Profile.Save', using the password '11'
-monke pack Profile.Save.json Profile.Save 11
+.\monke.exe pack Profile.Save.json Profile.Save 11
 ```
 
 # Passwords
