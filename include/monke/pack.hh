@@ -24,8 +24,8 @@ namespace monke {
 
 class Pack {
   public:
-    static void unpack(std::string_view __input_path, std::string_view __output_path, std::string_view __password);
-    static void pack(std::string_view __input_path, std::string_view __output_path, std::string_view __password);
+    static void unpack(std::string_view input_path, std::string_view output_path, std::string_view password);
+    static void pack(std::string_view input_path, std::string_view output_path, std::string_view password);
 };
 
 } // namespace monke

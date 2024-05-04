@@ -1,7 +1,7 @@
 # codeshaunted - monke
 # CMakeLists.txt
 # root CMake file
-# Copyright 2022 codeshaunted
+# Copyright 2024 codeshaunted
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -17,7 +17,7 @@
 
 cmake_minimum_required(VERSION 3.12)
 
-project(monke VERSION 1.2)
+project(monke VERSION 1.3)
 
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED TRUE)

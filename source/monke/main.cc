@@ -1,7 +1,7 @@
 // codeshaunted - monke
 // source/monke/main.cc
 // contains entry point
-// Copyright 2022 codeshaunted
+// Copyright 2024 codeshaunted
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -23,7 +23,7 @@
 
 void help() {
   std::cout << "monke v" << MONKE_VERSION_MAJOR << "." << MONKE_VERSION_MINOR << std::endl;
-  std::cout << "Copyright 2021 codeshaunted" << std::endl << std::endl;
+  std::cout << "Copyright 2024 codeshaunted" << std::endl << std::endl;
   std::cout << "Usage: monke <command> [arguments]" << std::endl << std::endl;
   std::cout << "Commands:" << std::endl;
   std::cout << " pack <input path> <output path> <password>" << std::endl;
@@ -42,9 +42,14 @@ int main(int argc, char* argv[]) {
       return 0;
     }
 
-    monke::Pack::unpack(argv[2], argv[3], argv[4]);
-
-    std::cout << "Unpacked '" << argv[2] << "' with password '" << argv[4] << "' to '" << argv[3] << "'." << std::endl;
+    // cursed error handling
+    // at least it doesn't silent fail anymore ¯\_(ツ)_/¯
+    try {
+      monke::Pack::unpack(argv[2], argv[3], argv[4]);
+      std::cout << "Unpacked '" << argv[2] << "' with password '" << argv[4] << "' to '" << argv[3] << "'." << std::endl;
+    } catch (...) {
+      std::cout << "Failed to unpack '" << argv[2] << "' with password '" << argv[4] << "!" << std::endl;
+    }
   }
   else if (!strcmp(argv[1], "pack") || !strcmp(argv[1], "p")) {
     if (argc != 5) {
@@ -52,9 +57,12 @@ int main(int argc, char* argv[]) {
       return 0;
     }
 
-    monke::Pack::pack(argv[2], argv[3], argv[4]);
-
-    std::cout << "Packed '" << argv[2] << "' with password '" << argv[4] << "' to '" << argv[3] << "'." << std::endl;
+    try {
+      monke::Pack::pack(argv[2], argv[3], argv[4]);
+      std::cout << "Packed '" << argv[2] << "' with password '" << argv[4] << "' to '" << argv[3] << "'." << std::endl;
+    } catch (...) {
+      std::cout << "Failed to pack '" << argv[2] << "' with password '" << argv[4] << "!" << std::endl;
+    }
   }
   else {
     help();
