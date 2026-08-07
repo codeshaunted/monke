@@ -1,0 +1,99 @@
+name: Release
+
+on:
+  push:
+    tags: ["v*"]
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v7
+      - uses: dtolnay/rust-toolchain@stable
+      - run: cargo test --locked --all-targets
+      - name: Check tag version
+        shell: bash
+        run: |
+          version="$(cargo metadata --no-deps --format-version 1 | jq -r '.packages[] | select(.name == "monke") | .version')"
+          if [[ "v${version}" != "${GITHUB_REF_NAME}" ]]; then
+            echo "tag ${GITHUB_REF_NAME} does not match package version ${version}" >&2
+            exit 1
+          fi
+
+  build:
+    needs: validate
+    strategy:
+      matrix:
+        include:
+          - runner: ubuntu-latest
+            target: x86_64-unknown-linux-gnu
+            archive: monke-linux-x86_64.tar.gz
+            directory: monke-linux-x86_64
+          - runner: macos-latest
+            target: aarch64-apple-darwin
+            archive: monke-macos-aarch64.tar.gz
+            directory: monke-macos-aarch64
+          - runner: macos-latest
+            target: x86_64-apple-darwin
+            archive: monke-macos-x86_64.tar.gz
+            directory: monke-macos-x86_64
+          - runner: windows-latest
+            target: x86_64-pc-windows-msvc
+            archive: monke-windows-x86_64.zip
+            directory: monke-windows-x86_64
+    runs-on: ${{ matrix.runner }}
+
+    steps:
+      - uses: actions/checkout@v7
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          targets: ${{ matrix.target }}
+      - run: cargo build --release --locked --target ${{ matrix.target }}
+      - name: Package
+        if: runner.os != 'Windows'
+        shell: bash
+        run: |
+          mkdir "${{ matrix.directory }}"
+          cp "target/${{ matrix.target }}/release/monke" README.md LICENSE.md "${{ matrix.directory }}/"
+          tar -czf "${{ matrix.archive }}" "${{ matrix.directory }}"
+      - name: Package
+        if: runner.os == 'Windows'
+        shell: pwsh
+        run: |
+          New-Item -ItemType Directory -Path "${{ matrix.directory }}"
+          Copy-Item "target/${{ matrix.target }}/release/monke.exe", "README.md", "LICENSE.md" -Destination "${{ matrix.directory }}"
+          Compress-Archive -Path "${{ matrix.directory }}" -DestinationPath "${{ matrix.archive }}"
+      - uses: actions/upload-artifact@v7
+        with:
+          name: ${{ matrix.target }}
+          path: ${{ matrix.archive }}
+          if-no-files-found: error
+
+  release:
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/download-artifact@v8
+        with:
+          path: dist
+          merge-multiple: true
+      - name: Generate checksums
+        working-directory: dist
+        run: sha256sum * > SHA256SUMS
+      - name: Publish release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        run: |
+          if gh release view "${GITHUB_REF_NAME}" >/dev/null 2>&1; then
+            gh release upload "${GITHUB_REF_NAME}" dist/* --clobber
+          else
+            gh release create "${GITHUB_REF_NAME}" dist/* --verify-tag --generate-notes --title "${GITHUB_REF_NAME}"
+          fi
